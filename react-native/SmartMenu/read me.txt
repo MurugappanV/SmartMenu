@@ -1,0 +1,4 @@
+Smart Menu - React Native App
+
+Initiation
+react-native init SmartMenu            react-native init <Project Name>
