@@ -1,4 +1,17 @@
 Smart Menu - React Native App
 
 Initiation
-react-native init SmartMenu            react-native init <Project Name>
+    react-native init SmartMenu            react-native init <Project Name>
+
+Bottom nagivation 
+    yarn add react-native-material-bottom-navigation
+    https://www.npmjs.com/package/react-native-material-bottom-navigation#install
+
+vector icons
+    yarn add react-native-vector-icons
+    
+    inner requirements
+        add following line in android\app\build.gradle
+        apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+    https://material.io/guidelines/style/color.html#color-color-palette
