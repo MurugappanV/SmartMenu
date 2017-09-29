@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {View, Text} from 'react-native';
-import BottomNavigation, { Tab, NavigationComponent } from 'react-native-material-bottom-navigation';
+import { Button } from 'react-native';
+import  {  NavigationComponent } from 'react-native-material-bottom-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { TabNavigator } from 'react-navigation';
 import ProfileTab from './ProfileTab';
@@ -43,6 +43,15 @@ const HomePage = TabNavigator({
       }
     }
   }
+});
+
+HomePage.navigationOptions = ({ navigation }) => ({
+  header: (
+    <Button
+      onPress={() => navigation.navigate('AboutRestaurant')}
+      title="Taste with Me"
+    />
+  ),
 });
 
 export default HomePage;

@@ -1,22 +1,33 @@
-Smart Menu - React Native App
+---Smart Menu - React Native App---
 
-Initiation
-    react-native init SmartMenu            react-native init <Project Name>
+---Execute commands in CLI - Project root folder
 
-Bottom nagivation 
-    yarn add react-native-material-bottom-navigation
-    https://www.npmjs.com/package/react-native-material-bottom-navigation#install
+Initiation 
+    new project
+        react-native init SmartMenu            react-native init <Project Name>
+    downloaded project 
+        npm install 
 
-react navigation
-    yarn add react-navigation
+run android
+    react-native run-android
 
 
+NPM packages used 
+    Bottom nagivation 
+        yarn add react-native-material-bottom-navigation
+        https://www.npmjs.com/package/react-native-material-bottom-navigation#install
 
-vector icons
-    yarn add react-native-vector-icons
-    
-    inner requirements
-        add following line in android\app\build.gradle
-        apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+    react navigation
+        yarn add react-navigation
+        https://reactnavigation.org/docs
 
-    https://material.io/guidelines/style/color.html#color-color-palette
+    vector icons
+        yarn add react-native-vector-icons
+        https://github.com/oblador/react-native-vector-icons
+        inner requirements
+            add following line in android\app\build.gradle
+            apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"
+
+    Colors Material Design
+        https://material.io/guidelines/style/color.html#color-color-palette
+

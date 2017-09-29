@@ -9,14 +9,12 @@ import {
   AppRegistry,
   View
 } from 'react-native';
-import HomePage from './src/internal/pages/HomePage';
+import MainNavigator from './src/internal/pages/MainNavigator';
 
 export default class SmartMenu extends Component {
   render() {
     return (
-
-        <HomePage/>
-
+        <MainNavigator/>
     );
   }
 }
