@@ -6,7 +6,7 @@ import Faker from 'faker';
 const Conn = new Sequelize(
     'graphqltrial',
     'root',
-    '',
+    'admin',
     {
         dialect: 'mysql',
         host: 'localhost'
@@ -46,19 +46,20 @@ const Post = Conn.define('post', {
 Person.hasMany(Post);
 Post.belongsTo(Person);
 
-Conn.sync({}).then(()=>{
-    Lodash.times(10, () => {
-        return Person.create({
-            firstName: Faker.name.firstName(),
-            lastName: Faker.name.lastName(),
-            email: Faker.internet.email(),
-        }).then(person => {
-            return person.createPost({
-                title: 'Sample title by '+ person.firstName,
-                content: Faker.company.catchPhrase(),
-            })
-        })
-    });
-});
+Conn.sync({})
+// .then(()=>{
+//     Lodash.times(10, () => {
+//         return Person.create({
+//             firstName: Faker.name.firstName(),
+//             lastName: Faker.name.lastName(),
+//             email: Faker.internet.email(),
+//         }).then(person => {
+//             return person.createPost({
+//                 title: 'Sample title by '+ person.firstName,
+//                 content: Faker.company.catchPhrase(),
+//             })
+//         })
+//     });
+// });
 
 export default Conn;
