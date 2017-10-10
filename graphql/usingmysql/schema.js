@@ -5,9 +5,10 @@ import {
     GraphQLList,
     GraphQLSchema
 } from 'graphql';
-import Db from './db';
+import Db, {Person, Post} from './db';
+import { resolver } from "graphql-sequelize";
 
-const Person = new GraphQLObjectType({
+const PersonType = new GraphQLObjectType({
     name: 'Person',
     description: 'This represent a Person',
     fields: () => {
@@ -37,7 +38,7 @@ const Person = new GraphQLObjectType({
                 }
             },
             posts: {
-                type: new GraphQLList(Post),
+                type: new GraphQLList(PostType),
                 resolve(person) {
                     return person.getPosts();
                 }
@@ -46,7 +47,7 @@ const Person = new GraphQLObjectType({
     }
 });
 
-const Post = new GraphQLObjectType({
+const PostType = new GraphQLObjectType({
     name: 'Post',
     description: 'This represent a Post',
     fields: () => {
@@ -70,7 +71,7 @@ const Post = new GraphQLObjectType({
                 }
             },
             person: {
-                type: Person,
+                type: PersonType,
                 resolve(post) {
                     return post.getPerson();
                 }
@@ -85,7 +86,7 @@ const Query = new GraphQLObjectType({
     fields: () => {
         return {
             people: {
-                type: new GraphQLList(Person),
+                type: new GraphQLList(PersonType),
                 args: {
                     id: {
                         type: GraphQLInt
@@ -94,20 +95,20 @@ const Query = new GraphQLObjectType({
                         type: GraphQLString
                     }
                 },
-                resolve(root, args) {
-                    return Db.models.person.findAll({where: args});
-                }
+                resolve: resolver(Person, {
+                    list: true
+                })
             },
             posts: {
-                type: new GraphQLList(Post),
+                type: new GraphQLList(PostType),
                 args: {
                     id: {
                         type: GraphQLInt
                     }
                 },
-                resolve(root, args) {
-                    return Db.models.post.findAll({where: args});
-                }
+                resolve: resolver(Post, {
+                    list: true
+                })
             },
         };
     }
@@ -119,7 +120,7 @@ const Mutation = new GraphQLObjectType({
     fields() {
         return {
             addPerson: {
-                type: Person,
+                type: PersonType,
                 args: {
                     firstName: {
                         type:  GraphQLString
